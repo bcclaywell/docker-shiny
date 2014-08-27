@@ -32,7 +32,8 @@ RUN mkdir -p log srv R/library
 
 # Install R dependencies.
 RUN R -e "install.packages(c('shiny', 'devtools'), repos='http://cran.rstudio.com/')"
-RUN R -e "devtools::install_github('rstudio/rmarkdown')"
+
+#RUN R -e "devtools::install_github('rstudio/rmarkdown')"
 
 # Switch back to root for the rest of the configuration.
 USER root
