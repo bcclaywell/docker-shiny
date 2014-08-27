@@ -1,5 +1,5 @@
 # set shiny user library path
-.libsPath(c('/home/shiny/R/library'), .libsPath())
+.libPaths(c('/home/shiny/R/library', .libPaths()))
 
 # set a CRAN mirror
 local({ r <- getOption("repos")

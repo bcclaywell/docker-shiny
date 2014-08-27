@@ -37,7 +37,7 @@ ADD Rprofile /home/shiny/.Rprofile
 RUN echo 'debconf debconf/frontend select Dialog' | debconf-set-selections
 
 # Configure exports.
-ENV DOCKER_EXPORT /srv/shiny-server
+ENV DOCKER_EXPORT /home/shiny/srv /home/shiny/log
 VOLUME /export
 
 EXPOSE 3838
