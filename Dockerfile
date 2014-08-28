@@ -1,5 +1,5 @@
 FROM cbarraford/r3x:3.1.1
-ENV REFRESHED_AT 2014-08-26
+ENV REFRESHED_AT 2014-08-28
 
 MAINTAINER Brian Claywell <bclaywel@fhcrc.org>
 
