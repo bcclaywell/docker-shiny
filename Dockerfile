@@ -44,7 +44,7 @@ ADD shiny-server.conf /etc/shiny-server/shiny-server.conf
 RUN echo 'debconf debconf/frontend select Dialog' | debconf-set-selections
 
 # Configure exports.
-ENV DOCKER_EXPORT /home/shiny/log /home/shiny/srv /home/shiny/R
+ENV DATA_EXPORTS /home/shiny/log /home/shiny/srv /home/shiny/R
 VOLUME /export
 
 EXPOSE 3838
