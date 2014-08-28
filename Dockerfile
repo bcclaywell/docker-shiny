@@ -38,14 +38,11 @@ RUN R -e "devtools::install_github('rstudio/rmarkdown')"
 USER root
 
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+ADD docker-link-exports.sh /usr/local/bin/docker-link-exports
 ADD shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 # Set debconf back to normal.
 RUN echo 'debconf debconf/frontend select Dialog' | debconf-set-selections
-
-# Configure exports.
-ENV DATA_EXPORTS /home/shiny/log /home/shiny/srv /home/shiny/R
-VOLUME /export
 
 EXPOSE 3838
 
