@@ -10,8 +10,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 # Install requirements.
 RUN apt-get update -q && \
     apt-get install -y -q --no-install-recommends \
-    gdebi-core \
-    libopenblas-base
+    gdebi-core
 
 WORKDIR /root
 
