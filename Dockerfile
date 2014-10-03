@@ -1,5 +1,5 @@
 FROM cbarraford/r3x:3.1.1
-ENV REFRESHED_AT 2014-08-28
+ENV REFRESHED_AT 2014-10-03
 
 MAINTAINER Brian Claywell <bclaywel@fhcrc.org>
 
@@ -16,9 +16,9 @@ RUN apt-get update -q && \
 WORKDIR /root
 
 # Install shiny-server.
-RUN wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.2.1.362-amd64.deb
-RUN gdebi -n shiny-server-1.2.1.362-amd64.deb && \
-    rm shiny-server-1.2.1.362-amd64.deb
+RUN wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.2.2.367-amd64.deb
+RUN gdebi -n shiny-server-1.2.2.367-amd64.deb && \
+    rm shiny-server-1.2.2.367-amd64.deb
 
 # Confine shiny-server to the shiny user's home directory.
 WORKDIR /home/shiny
@@ -31,7 +31,9 @@ USER shiny
 RUN mkdir -p log srv R/library
 
 # Install R dependencies.
-RUN R -e "install.packages(c('shiny', 'devtools'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('devtools'), repos='http://cran.rstudio.com/')"
+RUN R -e "devtools::install_github('hadley/devtools')"
+RUN R -e "devtools::install_github('rstudio/shiny')"
 RUN R -e "devtools::install_github('rstudio/rmarkdown')"
 
 # Switch back to root for the rest of the configuration.
